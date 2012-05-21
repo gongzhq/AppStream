@@ -1,0 +1,8 @@
+build/
+test/.coverage
+test/coverage_html
+test/coverage_summary
+test/output
+help/*
+data/xapian/*
+.backup
