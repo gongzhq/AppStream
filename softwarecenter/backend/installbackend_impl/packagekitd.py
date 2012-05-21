@@ -290,7 +290,7 @@ class PackagekitBackend(GObject.GObject, InstallBackend):
         # PackageKit from installing untrusted packages
         # (in general, all enabled repos should have GPG signatures,
         # which is enough for being marked "trusted", but still)
-        self.pktask.install_packages_async(True,  # only trusted
+        self.pktask.install_packages_async(#True,  # only trusted
                     pkgnames,
                     None,  # cancellable
                     self._on_progress_changed,

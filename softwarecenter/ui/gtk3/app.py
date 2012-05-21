@@ -377,8 +377,8 @@ class SoftwareCenterAppGtk3(SimpleGtkbuilderApp):
         # run s-c-agent update
         if options.disable_buy or not self.distro.PURCHASE_APP_URL:
             self.menu_file.remove(self.menuitem_reinstall_purchases)
-            if not (options.enable_lp or och):
-                self.menu_file.remove(self.separator_login)
+            #if not (options.enable_lp or och):
+            #    self.menu_file.remove(self.separator_login)
         else:
             # running the agent will trigger a db reload so we do it later
             GObject.timeout_add_seconds(30, self._run_software_center_agent)
