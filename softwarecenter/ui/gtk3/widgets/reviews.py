@@ -440,7 +440,7 @@ class UIReview(Gtk.VBox):
         self.modify_error = False
 
         self.pack_start(self.version_label, False, False, 0)
-        self.pack_start(self.header, False, False, 0)
+        #self.pack_start(self.header, False, False, 0)
         self.pack_start(self.body, False, False, 0)
         self.pack_start(self.footer, False, False, StockEms.SMALL)
 
