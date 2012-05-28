@@ -125,7 +125,7 @@ class UIReviewsList(Gtk.VBox):
         inner_vb = Gtk.VBox()
         inner_vb.pack_start(self.new_review, False, False, StockEms.SMALL)
         self.header.pack_start(inner_vb, False, False, 0)
-        self.pack_start(self.header, False, False, 0)
+        #self.pack_start(self.header, False, False, 0)
 
         # review sort method
         self.sort_combo = Gtk.ComboBoxText()
