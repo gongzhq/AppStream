@@ -513,16 +513,6 @@ Konstantin Datz - Icon
                       </object>
                     </child>
                     <child>
-                      <object class="GtkImageMenuItem" id="menuitem_tos">
-                        <property name="label" translatable="yes">Terms of Use</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="use_action_appearance">False</property>
-                        <property name="use_stock">False</property>
-                        <signal name="activate" handler="on_menuitem_tos_activate" swapped="no"/>
-                      </object>
-                    </child>
-                    <child>
                       <object class="GtkImageMenuItem" id="menuitem_about">
                         <property name="label">gtk-about</property>
                         <property name="visible">True</property>
