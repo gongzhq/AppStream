@@ -21,7 +21,10 @@ cd test;make
 You can run a developer instance with:
 
 python setup.py build
+mkdir data/xapian
 ./software-center
+
+
 
 The initial launch of this will take a bit as it will build a private
 search database but this is only needed once.
