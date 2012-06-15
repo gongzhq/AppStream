@@ -254,6 +254,51 @@ msgstr "依赖"
 msgid "Installed Software"
 msgstr "已安装的软件"
 
+msgid "Installed"
+msgstr "已安装"
+
+msgid "All Software"
+msgstr "所有软件"
+
+msgid "History"
+msgstr "历史记录"
+
+msgid "Progress"
+msgstr "刷新"
+
+msgid "Today"
+msgstr "今天"
+
+msgid "Top Rated"
+msgstr "最受好评"
+
+msgid "More Info"
+msgstr "更多信息"
+
+msgid "More"
+msgstr "更多"
+
+msgid "All Changes"
+msgstr "所有变化"
+
+msgid "Installations"
+msgstr "安装"
+
+msgid "Updates"
+msgstr "更新"
+
+msgid "Removals"
+msgstr "删除"
+
+msgid "Loading history"
+msgstr "加载历史"
+
+msgid "Provided by Neokylin"
+msgstr "提供自Neokylin"
+
+msgid "Unknown repository"
+msgstr "未知仓库"
+
 #: ../softwarecenter/view/installedpane.py:131
 #, python-format
 msgid "%s installed item"

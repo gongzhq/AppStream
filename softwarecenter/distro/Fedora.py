@@ -66,10 +66,11 @@ class Fedora(Distro):
             Overrides what's present in yum.conf for fedora, updates,
             updates-testing, their respective -source and -debuginfo
         """
-        return _("Provided by Fedora")
+        #return _("Provided by Fedora")
+        return _("Provided by Neokylin")
 
     def get_app_name(self):
-        return _("Fedora Software Center")
+        return _("Software Center")
 
     def get_removal_warning_text(self, cache, pkg, appname, depends):
         primary = _("To remove %s, these items must be removed "

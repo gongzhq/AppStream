@@ -1310,7 +1310,7 @@ class AppDetailsView(Viewport):
         vb.pack_start(self._hbars[2], False, False, 0)
 
         # reviews cascade
-        self.reviews.connect("new-review", self._on_review_new)
+        #self.reviews.connect("new-review", self._on_review_new)
         self.reviews.connect("report-abuse", self._on_review_report_abuse)
         self.reviews.connect("submit-usefulness",
             self._on_review_submit_usefulness)
@@ -1558,7 +1558,7 @@ class AppDetailsView(Viewport):
             GObject.idle_add(self.update_totalsize,
                              priority=GObject.PRIORITY_LOW)
         self._update_recommendations(app_details.pkgname)
-        self._update_reviews(app_details)
+        #self._update_reviews(app_details)
 
         # show where it is
         self._configure_where_is_it()

@@ -18,6 +18,7 @@
 
 
 from gi.repository import Gtk, GObject
+import commands
 import logging
 
 from gettext import gettext as _
@@ -42,7 +43,7 @@ _last_button = None
 
 class ViewSwitcher(Gtk.Box):
 
-    ICON_SIZE = Gtk.IconSize.LARGE_TOOLBAR
+    ICON_SIZE = Gtk.IconSize.SMALL_TOOLBAR
 
     def __init__(self, view_manager, datadir, db, cache, icons):
         # boring stuff
@@ -94,6 +95,9 @@ class ViewSwitcher(Gtk.Box):
         icon = SymbolicIcon("history")
         self.append_section(ViewPages.HISTORY, _("History"), icon)
 
+        icon = SymbolicIcon("history")
+        self.append_section(ViewPages.UPGRADE, _("Upgrade"), icon)
+
         # the pendingpane
         icon = PendingSymbolicIcon("pending")
         self.append_section(ViewPages.PENDING, _("Progress"), icon)
@@ -141,6 +145,9 @@ class ViewSwitcher(Gtk.Box):
         # mvo: this check causes bug LP: #828675
         #if self._prev_view is view_id:
         #    return True
+	if view_id == "view-page-upgrade":
+	    ret1,ret2=commands.getstatusoutput("/usr/bin/gpk-update-viewer")
+	    return
 
         vm = self.view_manager
 

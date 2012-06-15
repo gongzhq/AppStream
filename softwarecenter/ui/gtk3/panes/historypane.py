@@ -22,6 +22,7 @@ from gi.repository import Gtk, Gdk
 
 import logging
 import datetime
+import pytz
 
 from gettext import gettext as _
 
@@ -356,7 +357,7 @@ class HistoryPane(Gtk.VBox, BasePane):
                     # Translators : time displayed in history, display hours
                     # (0-12), minutes and AM/PM. %H should be used instead
                     # of %I to display hours 0-24
-                    'time': when.time().strftime(_('%I:%M %p')),
+                    'time': when.replace(tzinfo=pytz.utc).astimezone(pytz.timezone('Asia/Shanghai')).time().strftime(_('%I:%M %p')),
                    }
             if action == self.INSTALLED:
                 text = _('%(pkgname)s <span color="%(color)s">'

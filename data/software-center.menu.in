@@ -34,6 +34,7 @@
   <!-- Development Tools -->
   <Menu>
     <_Name>Developer Tools</_Name>
+    <Directory>Developer-tools.directory</Directory>
     <SCIcon>applications-development</SCIcon>
     <Include>
       <Or>
@@ -244,6 +245,7 @@
   <!-- Science -->
   <Menu>
     <_Name>Science &amp; Engineering</_Name>
+    <Directory>Science-Engineering.directory</Directory>
     <SCIcon>applications-science</SCIcon>
     <Include>
       <Or>
@@ -328,6 +330,7 @@
   <!-- Fonts -->
   <Menu>
     <_Name>Fonts</_Name>
+    <Directory>Fonts.directory</Directory>
     <SCIcon>applications-fonts</SCIcon>
     <Include>
       <And>
@@ -527,6 +530,7 @@
 
   <Menu>
     <_Name>Themes &amp; Tweaks</_Name>
+    <Directory>Themes-Tweaks.directory</Directory>
     <SCIcon>preferences-other</SCIcon>
     <Include><Category>Settings</Category></Include>
   </Menu>
@@ -534,6 +538,7 @@
  <!-- System -->
   <Menu>
     <_Name>System</_Name>
+    <Directory>Systems.directory</Directory>
     <SCIcon>applications-system</SCIcon>
     <OnlyUnallocated/>
     <Include>
@@ -543,6 +548,7 @@
   <!-- ebooks -->
   <Menu>
     <_Name>Books &amp; Magazines</_Name>
+    <Directory>Books-Magazines.directory</Directory>
     <SCIcon>application-pdf</SCIcon>
     <Include>
       <And>

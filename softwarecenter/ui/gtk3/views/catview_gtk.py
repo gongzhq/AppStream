@@ -272,7 +272,7 @@ class LobbyViewGtk(CategoriesViewGtk):
 
         self._append_whats_new()
         self._append_top_rated()
-        self._append_recommended_for_you()
+        self._append_recommended_for_you() # xiaoying.hu: hidden recommended module.
         self._append_appcount()
 
         #self._append_video_clips()
@@ -466,8 +466,8 @@ class LobbyViewGtk(CategoriesViewGtk):
         #       the recommended for you pieces are done and deployed
         #       see https://wiki.ubuntu.com/SoftwareCenter#Home_screen
         self.recommended_for_you_panel = RecommendationsPanelLobby(self)
-        self.bottom_hbox.pack_start(self.recommended_for_you_panel,
-                                    True, True, 0)
+        #self.bottom_hbox.pack_start(self.recommended_for_you_panel,
+        #                            True, True, 0)
 
     def _update_appcount(self):
         enq = AppEnquire(self.cache, self.db)

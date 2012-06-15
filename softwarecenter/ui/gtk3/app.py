@@ -37,6 +37,7 @@ import xapian
 import glob
 
 import webbrowser
+import titlebar
 
 from gettext import gettext as _
 
@@ -87,6 +88,7 @@ from softwarecenter.ui.gtk3.panes.availablepane import AvailablePane
 from softwarecenter.ui.gtk3.panes.historypane import HistoryPane
 from softwarecenter.ui.gtk3.panes.globalpane import GlobalPane
 from softwarecenter.ui.gtk3.panes.pendingpane import PendingPane
+from softwarecenter.ui.gtk3.panes.upgradepane import UpgradePane
 from softwarecenter.ui.gtk3.session.appmanager import (ApplicationManager,
                                                        get_appmanager)
 from softwarecenter.ui.gtk3.session.viewmanager import (
@@ -304,6 +306,9 @@ class SoftwareCenterAppGtk3(SimpleGtkbuilderApp):
                                             self.icons,
                                             self.datadir)
             self.view_manager.register(self.history_pane, ViewPages.HISTORY)
+	    self.upgrade_pane = UpgradePane(self.icons)
+            self.view_manager.register(self.upgrade_pane,
+                ViewPages.UPGRADE)
 
             # pending pane
             self.pending_pane = PendingPane(self.icons)
@@ -315,7 +320,20 @@ class SoftwareCenterAppGtk3(SimpleGtkbuilderApp):
             self.distro.get_app_name())
 
         # specify the smallest allowable window size
-        self.window_main.set_size_request(730, 470)
+        self.window_main.set_size_request(920, 470)
+
+        self.hasMax = False
+        #self.window_main.set_decorated(False)
+	self.topbox = Gtk.VBox()
+        self.topbar = Gtk.EventBox()
+        self.topbar.connect('button-press-event',
+                            lambda w, e: self.moveWindow(w, e, self.window_main))
+        self.topbar.connect("button-press-event", self.doubleClickWindow)
+
+	self.titlebar = titlebar.Titlebar(self.minWindow, self.toggleWindow, self.closeWindow)
+        self.box1.pack_start(self.topbar, False, False, 0)
+	self.topbar.add(self.topbox)
+        self.topbox.pack_start(self.titlebar.box, False, False, 0)
 
         # reviews
         with ExecutionTime("create review loader"):
@@ -405,6 +423,49 @@ class SoftwareCenterAppGtk3(SimpleGtkbuilderApp):
             LaunchpadIntegration.add_items(self.menu_help, 3, True, False)
         except Exception, e:
             LOG.debug("launchpad integration error: '%s'" % e)
+
+    def moveWindow(self, widget, event, window):
+    	'''Move window.'''
+        window.begin_move_drag(
+        	event.button,
+        	int(event.x_root),
+        	int(event.y_root),
+        	event.time)
+
+    def minWindow(self):
+        '''Minimum window.'''
+        self.window_main.iconify()
+
+    def doubleClickWindow(self, widget, event):
+        '''Handle double click on window.'''
+        if event.button == 1 and event.type == Gdk.EventType._2BUTTON_PRESS:
+            self.toggleWindow()
+
+    def toggleWindow(self):
+        '''Toggle window.'''
+        if self.hasMax:
+            self.window_main.unmaximize()
+        else:
+            self.window_main.maximize()
+
+        self.hasMax = not self.hasMax
+
+    def closeWindow(self):
+        '''Close window'''
+        # Hide window immediately when user click close button,
+        # user will feeling this software very quick, ;p
+        self.window_main.hide()
+
+        self.destroy(self.window_main)
+
+    def destroy(self, widget, data=None):
+        '''Destroy main window.'''
+        # Stop download thread.
+        #if self.downloadQueue.downloadQueue != None:
+        #    self.downloadQueue.downloadQueue.put("STOP")
+
+        Gtk.main_quit()
+
 
     # helper
     def _run_software_center_agent(self):
@@ -1290,8 +1351,8 @@ class SoftwareCenterAppGtk3(SimpleGtkbuilderApp):
             screen_height = Gdk.Screen.height()
             screen_width = Gdk.Screen.width()
             self.window_main.set_default_size(
-                                        min(int(.85 * screen_width), 1200),
-                                        min(int(.85 * screen_height), 800))
+                                        min(int(.80 * screen_width), 1200),
+                                        min(int(.80 * screen_height), 800))
         if (self.config.has_option("general", "maximized") and
             self.config.getboolean("general", "maximized")):
             self.window_main.maximize()
@@ -1334,6 +1395,8 @@ class SoftwareCenterAppGtk3(SimpleGtkbuilderApp):
     def run(self, args):
         # show window as early as possible
         self.window_main.show_all()
+        self.menubar1.hide()
+        self.box1.hide()
 
         # delay cache open
         GObject.timeout_add(1, self.cache.open)

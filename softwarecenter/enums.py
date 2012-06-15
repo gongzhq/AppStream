@@ -74,6 +74,7 @@ class ViewPages:
     AVAILABLE = "view-page-available"
     INSTALLED = "view-page-installed"
     HISTORY = "view-page-history"
+    UPGRADE = "view-page-upgrade"
     SEPARATOR_1 = "view-page-separator-1"
     PENDING = "view-page-pending"
     CHANNEL = "view-page-channel"
@@ -84,7 +85,8 @@ class ViewPages:
     PERMANENT_VIEWS = (AVAILABLE,
                        INSTALLED,
                        CHANNEL,
-                       HISTORY
+                       HISTORY,
+		       UPGRADE
                       )
 
 
