@@ -1,5 +1,0 @@
-
-VERSION='5.3.0'
-CODENAME='buzz'
-DISTRO='fedora'
-RELEASE='17'

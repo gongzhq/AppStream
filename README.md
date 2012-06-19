@@ -1,4 +1,0 @@
-AppStream
-=========
-
-Software center GUI
